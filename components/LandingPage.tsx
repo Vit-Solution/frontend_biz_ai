@@ -33,7 +33,7 @@ const LandingPage = () => {
       <section className="hero-gradient text-white py-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            BizBot
+            BizAI
           </h1>
           <p className="text-xl md:text-2xl mb-4 opacity-90">
             Nigerian Business FAQ Assistant
@@ -63,7 +63,7 @@ const LandingPage = () => {
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose BizBot?
+              Why Choose BizAI?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Designed specifically for Nigerian entrepreneurs and business owners
@@ -95,7 +95,7 @@ const LandingPage = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of Nigerian business owners who trust BizBot for their business guidance.
+            Join thousands of Nigerian business owners who trust BizAI for their business guidance.
           </p>
           <Button asChild size="lg" className="primary-gradient hover-lift">
             <Link href="/signup">
@@ -110,7 +110,7 @@ const LandingPage = () => {
       <footer className="bg-muted py-8 px-4">
         <div className="container mx-auto text-center">
           <p className="text-muted-foreground">
-            © 2024 BizBot - Nigerian Business FAQ Assistant. All rights reserved.
+            © 2024 BizAI - Nigerian Business FAQ Assistant. All rights reserved.
           </p>
         </div>
       </footer>

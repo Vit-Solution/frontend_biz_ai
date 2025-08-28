@@ -12,22 +12,28 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
 interface SignupData {
-  name: string;
+  full_name: string;
   username: string;
   email: string;
-  phone: string;
+  phone_number: string;
   password: string;
 }
 
 const signup = async (data: SignupData) => {
+  console.log("Sending signup data:", data);
+
   const res = await fetch("https://vit-api-ca7a.onrender.com/api/v1/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+
+  console.log("Response status:", res.status);
+
   if (!res.ok) {
     const error = await res.json();
-    throw new Error(error.message || "Signup failed");
+    console.log("Error response:", error);
+    throw new Error(error.message || error.error || `Signup failed with status ${res.status}`);
   }
   return res.json();
 };
@@ -50,9 +56,9 @@ const SignupPage = () => {
     onSuccess: () => {
       toast({
         title: "Account Created Successfully",
-        description: "Welcome to BizBot! Please complete your profile.",
+        description: "Welcome to BizAI! Please Log In.",
       });
-      router.push("/profile");
+      router.push("/login");
     },
     onError: (error: Error) => {
       toast({
@@ -84,10 +90,10 @@ const SignupPage = () => {
     e.preventDefault();
     if (!validateForm()) return;
     mutate({
-      name: formData.fullName,
+      full_name: formData.fullName,
       username: formData.username,
       email: formData.email,
-      phone: formData.phone,
+      phone_number: formData.phone,
       password: formData.password,
     });
   };
@@ -115,7 +121,7 @@ const SignupPage = () => {
             </div>
             <CardTitle className="text-2xl">Create Your Account</CardTitle>
             <CardDescription>
-              Join BizBot to get personalized Nigerian business assistance
+              Join BizAI to get personalized Nigerian business assistance
             </CardDescription>
           </CardHeader>
 

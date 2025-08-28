@@ -41,7 +41,7 @@ const ChatBot = () => {
     const demoMessages: Message[] = [
       {
         id: "1",
-        content: "Hello! I'm BizBot, your Nigerian business assistant. How can I help you today?",
+        content: "Hello! I'm BizAI, your Nigerian business assistant. How can I help you today?",
         sender: "bot",
         timestamp: new Date()
       }
@@ -250,7 +250,7 @@ const ChatBot = () => {
               <div className="w-8 h-8 primary-gradient rounded-full flex items-center justify-center mr-3">
                 <Bot className="h-5 w-5 text-white" />
               </div>
-              <h1 className="text-xl font-bold">BizBot - Nigerian Business FAQ</h1>
+              <h1 className="text-xl font-bold">BizAI - Nigerian Business FAQ</h1>
             </div>
           </div>
         </header>

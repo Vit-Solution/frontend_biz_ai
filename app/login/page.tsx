@@ -54,7 +54,7 @@ const LoginPage = () => {
       setIsLoading(false);
       toast({
         title: "Login Successful",
-        description: "Welcome back to BizBot!",
+        description: "Welcome back to BizAI!",
       });
       router.push("/profile");
     }, 1500);
