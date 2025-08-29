@@ -18,35 +18,31 @@ interface SignInData {
 }
 
 const signin = async (data: SignInData) => {
-  const body = new URLSearchParams({
-    grant_type: "password",
-    username: data.username,
-    password: data.password,
-    scope: "",
-    client_id: "string",
-    client_secret: "********",
-  });
+  console.log("Sending signin data:", data);
 
-  const res = await fetch("https://vit-api-ca7a.onrender.com/api/v1/auth/signin", {
+  const res = await fetch("/api/auth/signin", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      accept: "application/json",
-    },
-    body: body.toString(),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
 
   console.log("Response status:", res.status);
 
   if (!res.ok) {
-    const error = await res.json();
-    console.log("Error response:", error);
-    throw new Error(
-      error.detail || error.error || `Signin failed with status ${res.status}`
-    );
+    let errorMsg = `Signin failed with status ${res.status}`;
+    try {
+      const error = await res.json();
+      console.log("Error response:", error);
+      errorMsg = error.message || error.error || error.detail || errorMsg;
+    } catch (e) {
+      console.error("Error parsing error response:", e);
+    }
+    throw new Error(errorMsg);
   }
+
   return res.json();
 };
+
 
 
 const LoginPage = () => {
