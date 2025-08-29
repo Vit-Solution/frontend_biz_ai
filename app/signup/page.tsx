@@ -33,7 +33,7 @@ const signup = async (data: SignupData) => {
   if (!res.ok) {
     const error = await res.json();
     console.log("Error response:", error);
-    throw new Error(error.message || error.error || `Signup failed with status ${res.status}`);
+    throw new Error(error.detail || error.error || `Signup failed with status ${res.status}`);
   }
   return res.json();
 };
