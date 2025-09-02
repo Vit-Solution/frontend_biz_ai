@@ -171,12 +171,12 @@ const FAQTopicsPage = () => {
             Can&#39;t find what you&#39;re looking for?
           </h2>
           <p className="text-muted-foreground mb-6">
-            Ask BizBot directly in our chat interface for personalized assistance
+            Ask BizAi directly in our chat interface for personalized assistance
           </p>
           <Button asChild size="lg" className="primary-gradient hover-lift">
             <Link href="/chat">
               <MessageCircle className="mr-2 h-5 w-5" />
-              Ask BizBot Now
+              Ask BizAi Now
             </Link>
           </Button>
         </div>

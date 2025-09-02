@@ -423,7 +423,7 @@ const FAQDetailPage = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="flex items-center text-primary">
-                  Click to ask BizBot this question
+                  Click to ask BizAi this question
                   <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
                 </CardDescription>
               </CardContent>

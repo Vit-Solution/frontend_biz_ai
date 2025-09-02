@@ -74,7 +74,7 @@ const Navbar = () => {
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
                         <NavLink to="/chat" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">Ask BizBot</div>
+                          <div className="text-sm font-medium leading-none">Ask BizAi</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Get instant answers to your questions
                           </p>
@@ -114,13 +114,13 @@ const Navbar = () => {
                   <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
                     <MessageCircle className="h-5 w-5 text-white" />
                   </div>
-                  <span className="font-bold text-lg">BizBot</span>
+                  <span className="font-bold text-lg">BizAi</span>
                 </div>
 
                 <div className="space-y-2">
                   <MobileNavLink to="/" icon={Home}>Home</MobileNavLink>
                   <MobileNavLink to="/faq-topics" icon={HelpCircle}>FAQ Topics</MobileNavLink>
-                  <MobileNavLink to="/chat" icon={MessageCircle}>Ask BizBot</MobileNavLink>
+                  <MobileNavLink to="/chat" icon={MessageCircle}>Ask BizAi</MobileNavLink>
                   <MobileNavLink to="/profile" icon={User}>Profile</MobileNavLink>
                 </div>
 

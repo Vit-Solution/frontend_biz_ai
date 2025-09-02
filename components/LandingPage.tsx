@@ -37,14 +37,14 @@ const LandingPage = () => {
 
   const faqs = [
     {
-      question: "How accurate is BizBot's business advice?",
+      question: "How accurate is BizAi's business advice?",
       answer:
         'Our AI is trained on official Nigerian business regulations, CAC guidelines, and FIRS requirements. All information is regularly updated and verified by local business experts.',
     },
     {
-      question: 'Can BizBot help with business registration?',
+      question: 'Can BizAi help with business registration?',
       answer:
-        'Yes! BizBot provides complete guidance on CAC registration, including business name search, document preparation, and submission process.',
+        'Yes! BizAi provides complete guidance on CAC registration, including business name search, document preparation, and submission process.',
     },
     {
       question: 'Is my business information secure?',
@@ -52,9 +52,9 @@ const LandingPage = () => {
         'Absolutely. We use enterprise-grade security measures to protect your data. Your conversations and business information are encrypted and never shared.',
     },
     {
-      question: 'What types of businesses does BizBot support?',
+      question: 'What types of businesses does BizAi support?',
       answer:
-        'BizBot supports all types of Nigerian businesses - from sole proprietorships to limited companies, across all industries and sectors.',
+        'BizAi supports all types of Nigerian businesses - from sole proprietorships to limited companies, across all industries and sectors.',
     },
   ];
 
@@ -87,7 +87,7 @@ const LandingPage = () => {
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             Nigeria&apos;s #1 Business Assistant
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">BizBot</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">BizAi</h1>
           <p className="text-xl md:text-2xl mb-4 opacity-90">
             Nigerian Business FAQ Assistant
           </p>
@@ -98,7 +98,7 @@ const LandingPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button asChild size="lg" className="primary-gradient hover-lift">
               <Link href="/chats">
-                Try BizBot Now
+                Try BizAi Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -153,12 +153,12 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* How BizBot Works */}
+      {/* How BizAi Works */}
       <section className="py-20 px-4 hero-gradient">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              How BizBot Works
+              How BizAi Works
             </h2>
             <p className="text-xl text-white max-w-2xl mx-auto">
               Get business guidance in 3 simple steps
@@ -189,7 +189,7 @@ const LandingPage = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Quick answers to common questions about BizBot
+              Quick answers to common questions about BizAi
             </p>
           </div>
 
@@ -213,7 +213,7 @@ const LandingPage = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of Nigerian business owners who trust BizBot for
+            Join thousands of Nigerian business owners who trust BizAi for
             their business guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -228,7 +228,7 @@ const LandingPage = () => {
               </Link>
             </Button> */}
             <Button asChild size="lg" variant="hero" className="hover-lift">
-              <Link href="/chats">Ask BizBot Now</Link>
+              <Link href="/chats">Ask BizAi Now</Link>
             </Button>
           </div>
         </div>

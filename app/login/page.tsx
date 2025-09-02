@@ -128,7 +128,7 @@ const LoginPage = () => {
             </div>
             <CardTitle className="text-2xl">Welcome Back</CardTitle>
             <CardDescription>
-              Sign in to your BizBot account to continue
+              Sign in to your BizAi account to continue
             </CardDescription>
           </CardHeader>
 
@@ -198,7 +198,7 @@ const LoginPage = () => {
               </Button>
               
               <p className="text-sm text-muted-foreground text-center">
-                New to BizBot?{" "}
+                New to BizAi?{" "}
                 <Button variant="link" asChild className="p-0 h-auto font-normal text-primary">
                   <Link href="/signup">Create an account</Link>
                 </Button>
