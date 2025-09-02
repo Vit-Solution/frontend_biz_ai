@@ -9,8 +9,8 @@ export async function POST(req: Request) {
     username,
     password,
     scope: "",
-    client_id: "string",        // 🔒 put in env vars later
-    client_secret: "********",  // 🔒 put in env vars later
+    client_id: process.env.CLIENT_ID!,
+    client_secret: process.env.CLIENT_SECRET!
   });
 
   const upstream = await fetch("https://vit-api-ca7a.onrender.com/api/v1/auth/signin", {
@@ -35,7 +35,8 @@ export async function POST(req: Request) {
   const accessToken = data.access_token as string;
 
   // Set token in secure, httpOnly cookie
-  cookies().set("access_token", accessToken, {
+  const cookieStore = await cookies()
+  cookieStore.set("access_token", accessToken, {
     httpOnly: true,
     secure: true,
     sameSite: "strict",     
