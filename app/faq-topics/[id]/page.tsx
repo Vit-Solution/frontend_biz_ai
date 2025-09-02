@@ -450,7 +450,7 @@ const FAQDetailPage = () => {
             Have a specific question?
           </h2>
           <p className="text-muted-foreground mb-6">
-            Chat directly with BizBot for personalized answers to your Nigerian
+            Chat directly with BizAI for personalized answers to your Nigerian
             business questions
           </p>
           <Button asChild size="lg" className="primary-gradient hover-lift">

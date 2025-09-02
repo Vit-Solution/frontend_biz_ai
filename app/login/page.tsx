@@ -10,24 +10,75 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ArrowLeft, Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+
+interface SignInData {
+  username: string;
+  password: string;
+}
+
+const signin = async (data: SignInData) => {
+  console.log("Sending signin data:", data);
+
+  const res = await fetch("/api/auth/signin", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  console.log("Response status:", res.status);
+
+  if (!res.ok) {
+    let errorMsg = `Signin failed with status ${res.status}`;
+    try {
+      const error = await res.json();
+      console.log("Error response:", error);
+      errorMsg = error.message || error.error || error.detail || errorMsg;
+    } catch (e) {
+      console.error("Error parsing error response:", e);
+    }
+    throw new Error(errorMsg);
+  }
+
+  return res.json();
+};
+
+
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: ""
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: signin, 
+    onSuccess: () => {
+      toast({
+        title: "Login Successful",
+        description: "Welcome back to BizAI!",
+      });
+      router.push("/profile");
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Login Failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
 
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
     
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+    if (!formData.username) {
+      newErrors.username = "username is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.username)) {
+      newErrors.username = "username is invalid";
     }
     
     if (!formData.password) {
@@ -46,18 +97,10 @@ const LoginPage = () => {
     if (!validateForm()) {
       return;
     }
-    
-    setIsLoading(true);
-    
-    // Simulate login process
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Login Successful",
-        description: "Welcome back to BizBot!",
-      });
-      router.push("/profile");
-    }, 1500);
+    mutate({
+      username: formData.username,
+      password: formData.password,
+    });
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -92,23 +135,23 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="username">Email Address</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
-                    id="email"
+                    id="username"
                     type="email"
                     placeholder="your@email.com"
                     className="pl-10"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    aria-describedby={errors.email ? "email-error" : undefined}
+                    value={formData.username}
+                    onChange={(e) => handleInputChange("username", e.target.value)}
+                    aria-describedby={errors.username ? "username-error" : undefined}
                   />
                 </div>
-                {errors.email && (
+                {errors.username && (
                   <Alert variant="destructive" className="py-2">
-                    <AlertDescription id="email-error">
-                      {errors.email}
+                    <AlertDescription id="username-error">
+                      {errors.username}
                     </AlertDescription>
                   </Alert>
                 )}
@@ -142,9 +185,9 @@ const LoginPage = () => {
               <Button 
                 type="submit" 
                 className="w-full primary-gradient hover-lift"
-                disabled={isLoading}
+                disabled={isPending}
               >
-                {isLoading ? (
+                {isPending ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                     Signing In...
