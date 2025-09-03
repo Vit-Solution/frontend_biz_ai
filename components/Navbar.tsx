@@ -95,22 +95,22 @@ const Navbar = () => {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/login">Login</Link>
             </Button>
-            <Button size="sm" className="primary-gradient" asChild>
+            <Button size="sm" className="primary-gradient text-white" asChild>
               <Link href="/signup">Sign Up</Link>
             </Button>
           </div>
 
           {/* Mobile Menu */}
-          {/* <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="sm" className="md:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
               <div className="flex flex-col space-y-4 mt-8">
-                <div className="flex items-center space-x-2 mb-6">
+                {/* <div className="flex items-center space-x-2 mb-6">
                   <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
                     <MessageCircle className="h-5 w-5 text-white" />
                   </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
                   <MobileNavLink to="/faq-topics" icon={HelpCircle}>FAQ Topics</MobileNavLink>
                   <MobileNavLink to="/chat" icon={MessageCircle}>Ask BizAi</MobileNavLink>
                   <MobileNavLink to="/profile" icon={User}>Profile</MobileNavLink>
-                </div>
+                </div> */}
 
                 <div className="border-t pt-4 space-y-2">
                   <Button variant="ghost" className="w-full justify-start" asChild>
@@ -140,7 +140,7 @@ const Navbar = () => {
                 </div>
               </div>
             </SheetContent>
-          </Sheet> */}
+          </Sheet>
         </div>
       </div>
     </nav>
