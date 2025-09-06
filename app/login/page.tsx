@@ -61,7 +61,7 @@ const LoginPage = () => {
         title: "Login Successful",
         description: "Welcome back to BizAI!",
       });
-      router.push("/profile");
+      router.push("/chats");
     },
     onError: (error: Error) => {
       toast({
