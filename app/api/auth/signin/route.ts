@@ -32,6 +32,7 @@ export async function POST(req: Request) {
   }
 
   const data = await upstream.json();
+  console.log(data)
   const accessToken = data.access_token as string;
 
   // Set token in secure, httpOnly cookie
@@ -41,6 +42,7 @@ export async function POST(req: Request) {
     secure: true,
     sameSite: "strict",     
     path: "/",
+    maxAge: 60 * 60 * 24 * 7,
   });
 
   return NextResponse.json({ ok: true });

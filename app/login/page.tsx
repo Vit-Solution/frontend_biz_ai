@@ -11,6 +11,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ArrowLeft, Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
+import { useAuthStore } from "@/lib/store/authStore";
 
 interface SignInData {
   username: string;
@@ -51,17 +52,19 @@ const LoginPage = () => {
     password: ""
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
   const router = useRouter();
   const { toast } = useToast();
 
   const { mutate, isPending } = useMutation({
     mutationFn: signin, 
     onSuccess: () => {
+      setAuthenticated(true)
       toast({
         title: "Login Successful",
         description: "Welcome back to BizAI!",
       });
-      router.push("/chats");
+      router.push("/chat");
     },
     onError: (error: Error) => {
       toast({
