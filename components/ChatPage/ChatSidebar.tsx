@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import ChatItem from './ChatItem';
 import { toast } from '@/hooks/use-toast';
-import { useEffect } from 'react';
 
 export type ChatSidebarProps = {
   closeSidebar?: () => void;
@@ -22,20 +21,6 @@ export default function ChatSidebar({
   const { data, isLoading, error } = useChats();
   const { setActiveChatId } = useChatStore();
 
-  // ✅ always declared
-  useEffect(() => {
-    if (!error) return;
-
-    if ((error as any).status === 401) {
-      toast({
-        title: 'Unauthorized',
-        description: 'Please log in again.',
-        variant: 'destructive',
-      });
-      router.push('/login');
-    }
-  }, [error, router]);
-
   const handleNewChat = () => {
     setActiveChatId(null);
     router.push(`/chat`);
@@ -43,16 +28,17 @@ export default function ChatSidebar({
   };
 
   if (isLoading) return <div>Loading chats...</div>;
-  // if (error) {
-  //   // Trigger side effects first
-  //   toast({
-  //     title: 'Session Expired, Log in again',
-  //     description: error.message,
-  //     variant: 'destructive',
-  //   });
+  
+  if (error) {
+    // Trigger side effects first
+    toast({
+      title: 'Session Expired, Log in again',
+      description: error.message,
+      variant: 'destructive',
+    });
 
-  //   router.push('/login');
-  // }
+    router.push('/login');
+  }
 
   const sortedChats = [...(data || [])].sort(
     (a, b) =>
